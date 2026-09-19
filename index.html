@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>吉霸猫 @0x_JBCat 合作价卡</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+<style>
+:root{--bg:#09090b;--card:#12141a;--line:#242833;--gold:#e8c36a;--lime:#c8f54a;--muted:#8b93a7;--text:#f4f1ea}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--text);font-family:"Noto Sans SC",sans-serif}
+body{background:radial-gradient(1200px 600px at 10% -10%,#1b1608 0%,transparent 55%),radial-gradient(800px 400px at 100% 0%,#14200a 0%,transparent 50%),var(--bg)}
+.wrap{max-width:1120px;margin:0 auto;padding:32px 20px 80px}
+.hero{display:flex;justify-content:space-between;gap:24px;align-items:flex-end;flex-wrap:wrap;margin-bottom:28px}
+.kicker{color:var(--gold);letter-spacing:.18em;font-size:12px}
+h1{font-family:Syne,sans-serif;font-size:42px;margin:8px 0 6px;line-height:1.05}
+.sub{color:var(--muted);max-width:640px;line-height:1.7}
+.cta{display:flex;gap:10px;flex-wrap:wrap}
+.btn{border:1px solid var(--gold);background:transparent;color:var(--gold);padding:10px 16px;border-radius:999px;cursor:pointer;font-weight:700;text-decoration:none}
+.btn.solid{background:var(--gold);color:#111}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:22px 0 28px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px}
+.stat b{display:block;font-size:22px;color:var(--lime)}
+.stat span{color:var(--muted);font-size:12px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 16px}
+.tab{border:1px solid var(--line);background:#0e1016;color:var(--text);padding:9px 14px;border-radius:999px;cursor:pointer}
+.tab.active{border-color:var(--gold);background:#1a160c;color:var(--gold)}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.meta{padding:18px 20px 8px}
+.badge{display:inline-block;background:#1d2a0d;color:var(--lime);border-radius:999px;padding:3px 10px;font-size:12px;margin-right:8px}
+.note{color:var(--muted);margin:8px 0 0;font-size:14px}
+table{width:100%;border-collapse:collapse}
+th,td{padding:13px 16px;border-top:1px solid var(--line);text-align:left;font-size:14px}
+th{color:var(--muted);font-weight:500;background:#0e1118}
+td.price{color:var(--gold);font-weight:700;white-space:nowrap}
+td.off{color:#5c6373}
+.packages{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:22px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px}
+.card h3{margin:6px 0 8px}
+.card .p{color:var(--gold);font-size:22px;font-weight:800}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+ul{margin:8px 0 0;padding-left:18px;color:#d7dbe7;line-height:1.8}
+footer{margin-top:28px;color:var(--muted);font-size:13px}
+@media(max-width:800px){.stats,.packages,.grid2{grid-template-columns:1fr}h1{font-size:32px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hero">
+    <div>
+      <div class="kicker">RATE CARD 2026</div>
+      <h1>吉霸猫 合作价卡</h1>
+      <p class="sub">@0x_JBCat · 华语链上交易者评测 / 教程 / 小工具。4k 粉，卖转化和内容资产，不卖裸暴光。下表为 USDT 开价，成交可让至 8 折。</p>
+    </div>
+    <div class="cta">
+      <button class="btn solid" onclick="copyQuote()">复制当前报价</button>
+      <a class="btn" href="https://x.com/0x_JBCat" target="_blank" rel="noreferrer">X 主页</a>
+    </div>
+  </div>
+  <div class="stats">
+    <div class="stat"><b>~3,966</b><span>粉丝 · 2018 老号 · 蓝 V</span></div>
+    <div class="stat"><b>10.9万+</b><span>黑客松评测浏览</span></div>
+    <div class="stat"><b>16.1万</b><span>单条爆款浏览</span></div>
+    <div class="stat"><b>Builder</b><span>Chainlink DE · 4x Hackathon</span></div>
+  </div>
+  <div class="tabs" id="tabs"></div>
+  <div class="panel">
+    <div class="meta">
+      <span class="badge" id="badge"></span>
+      <strong id="title"></strong>
+      <p class="note" id="note"></p>
+    </div>
+    <table>
+      <thead><tr><th>推文内容</th><th>交付说明</th><th>报价 USDT</th></tr></thead>
+      <tbody id="body"></tbody>
+    </table>
+  </div>
+  <div class="packages">
+    <div class="card"><span class="badge">主推</span><h3>交易工具教程</h3><div class="p">300–500U + ref</div><p class="note">保姆级 Thread，对标 Axiom 教程。最匹配人设，不伤号。</p></div>
+    <div class="card"><span class="badge">差异化</span><h3>评测 + 看板</h3><div class="p">400–800U</div><p class="note">DePIN / 挖矿 / AI Infra。看板是招牌产品，可留作案例。</p></div>
+    <div class="card"><span class="badge">TGE</span><h3>预热 + 上线 + 复盘</h3><div class="p">350–600U</div><p class="note">三件套。现金不低于 150U，额度不抵现金。</p></div>
+  </div>
+  <div class="grid2">
+    <div class="card">
+      <h3>付款条款</h3>
+      <ul>
+        <li>土狗 / 匿名盘：100% 预付</li>
+        <li>工具 / 机构：50% 预付，发布结清</li>
+        <li>代币另算，不抵现金；3–6 个月解锁</li>
+        <li>置顶 24h +50–80U；T-0 卡点 +30%</li>
+        <li>内容可改 1 次，不接受直接贴稿</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>不接清单</h3>
+      <ul>
+        <li>貌貘 / 不明 LP / P 小将控筹</li>
+        <li>要求不标合作、写「必冲」、删风险提示</li>
+        <li>陌生土狗先发后付</li>
+        <li>一周 4 条以上不同 CA</li>
+        <li>NFT / GameFi 非主场，默认拒</li>
+      </ul>
+    </div>
+  </div>
+  <footer>代表作：Solana AI 黑客松评测 10.9万浏览 · Axiom 教程 7.2万 · GMGN 防 P 小将插件 · Pearl 挖矿看板。商务 DM @0x_JBCat。价格随市场调整，以对话确认为准。</footer>
+</div>
+<script>
+const data = {
+  meme: {title:"土狗 / 新盘 Meme",badge:"高风险",note:"询价最多，伤号最快。一周最多 1 单，全款预付。只写筹码结构，不写必冲。",rows:[["短推原创","1 条 + CA + 风险提示","80–150U"],["引用 / Quote","1 条点评","80–120U"],["分析短推","持仓 / LP / 是否 P 盘","150–220U"],["Thread 评测","5–8 条结构分析","200–280U"],["教程级 Thread","不适配","不接"],["置顶 12–24h","到期取消","+50–80U"],["T-0 卡点","不保证效果","+30%"],["现金 + 筹码","现金不低于 80U + 可卖代币","100U + token"],["周套餐 / 月顾问 / 工具","伤号","不接"]]},
+  tool: {title:"交易工具 / DEX / Wallet",badge:"最匹配",note:"主战场。教程 + 返佣优先。粉不多但都是交易用户，CPA 比大 V 便宜。",rows:[["短推实盘图文","截图 + 体验点","150–250U + ref"],["引用 / Quote","1 条","120–180U"],["Thread 评测","5–8 条","250–400U"],["教程级 Thread","8–15 条保姆级","300–500U + ref"],["置顶 24h","bio 可挂 ref","+50–80U"],["周套餐","3 短 + 1 Thread","400–600U"],["月顾问","4–6 条 + bio / ref","800–1500U / 月 + 返佣"],["定制插件 / 看板","产品活，按工时","500–1500U"]]},
+  infra: {title:"基建 / L2 / Oracle / 黑客松",badge:"开发者背书",note:"用 Chainlink DE + 4 次黑客松卖评测，报价拆成内容费 + 开发费。",rows:[["短推","1 条体验","150–250U"],["引用 / Quote","1 条","120–180U"],["深度 Thread","机制 / 架构 / 谁该用","250–400U"],["实测 / 打分 Thread","真去用 + 一句判断","350–500U"],["置顶 24h","到期取消","+50–80U"],["周套餐","3 短 + 1 Thread","450–650U"],["月大使","4–6 条 + 社群","800–1500U / 月"],["评测 + 小工具","看板 / 对照表 / 插件","600–1200U"]]},
+  tge: {title:"TGE / 中型 Token",badge:"研究向",note:"写成研究不要喊单。现金不低于 150U，额度不抵现金。",rows:[["短推","1 条","150–250U"],["引用 / Quote","1 条","120–180U"],["研究 Thread","叙事 / 筹码 / 风险 / 结论","200–400U"],["教程级 Thread","非主场","不推荐"],["TGE 三件套","预热 + 上线 + 24h 复盘","350–600U"],["置顶 / T-0","发布卡点","+50–80U / +30%"],["两周跟进","Thread + 2 跟进 + 1 引用","400–700U"],["月顾问","4–6 条","800–1200U / 月"]]},
+  depin: {title:"DePIN / 挖矿 / AI Infra",badge:"差异化最强",note:"Pearl 看板是现成模板。优先推评测 + 自建看板。",rows:[["短推","1 条体验","150–220U"],["引用 / Quote","1 条","120–180U"],["评测 Thread","机制 + 盈亏","200–350U"],["教程 Thread","上手 / 挖矿 / 节点","300–500U"],["置顶 24h","到期取消","+50–80U"],["周套餐","3 短 + 1 Thread","400–700U"],["月顾问 + 看板更新","内容 + 工具维护","800–1500U / 月"],["评测 + 自建看板","招牌 SKU","400–800U"]]},
+  brand: {title:"交易所 / 品牌 / NFT",badge:"非主场",note:"CEX 可接；NFT / GameFi 建议拒，或按 50–80U 地板。带不动上币预期。",rows:[["CEX 短推","1 条","150–250U"],["引用 / Quote","1 条","120–180U"],["Thread","2–5 条","200–350U"],["教程 Thread","非主场","不推荐"],["置顶 24h","到期取消","+50–80U"],["周套餐","3 短 + 1 Thread","400–600U"],["月顾问","4 条 + bio","600–1000U / 月"],["NFT / GameFi","非主场","50–80U 或不接"]]}
+};
+const order=[["tool","交易工具"],["depin","DePIN / AI"],["infra","基建 / L2"],["tge","TGE / Token"],["meme","土狗 Meme"],["brand","交易所 / 品牌"]];
+let current="tool";
+const tabs=document.getElementById("tabs");
+order.forEach(([id,label])=>{
+  const b=document.createElement("button");
+  b.className="tab"+(id===current?" active":"");
+  b.textContent=label;
+  b.onclick=()=>{current=id;render();};
+  tabs.appendChild(b);
+});
+function render(){
+  const d=data[current];
+  document.getElementById("badge").textContent=d.badge;
+  document.getElementById("title").textContent=d.title;
+  document.getElementById("note").textContent=d.note;
+  document.getElementById("body").innerHTML=d.rows.map(r=>{
+    const off=/不接|不推荐/.test(r[2]);
+    return `<tr><td>${r[0]}</td><td>${r[1]}</td><td class="${off?"off":"price"}">${r[2]}</td></tr>`;
+  }).join("");
+  [...tabs.children].forEach((el,i)=>el.classList.toggle("active",order[i][0]===current));
+}
+function copyQuote(){
+  const d=data[current];
+  const text=`吉霸猫 @0x_JBCat 报价·${d.title}\n${d.rows.map(r=>r[0]+：+r[2]).join("\n")}\n付款：土狗全款预付；工具/机构 50% 预付。代币不抵现金。`;
+  navigator.clipboard.writeText(text).then(()=>alert("已复制当前项目报价"));
+}
+render();
+</script>
+</body>
+</html>
